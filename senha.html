@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senha — Pedido Romântico</title>
+<link rel="icon" href="./assets/images/bow.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+
+<h1>🎀 Senha 💗</h1>
+<p class="big">“Chegou até aqui? Agora você tem que adivinhar a senha! É bem simples: quando foi o dia mais feliz da minha vida?”</p>
+<div class="password-wrap">
+  <input id="pw" type="text" inputmode="numeric" maxlength="6" placeholder="Digite a senha (DDMMAA)" autofocus>
+  <button class="btn" id="ok">Continuar</button>
+  <span class="badge">Dica: 07/07/23</span>
+</div>
+<script>
+(function(){
+  const ok = document.getElementById('ok');
+  const pw = document.getElementById('pw');
+  const check = ()=>{
+    if(pw.value.replace(/\\D/g,'') === '070723'){
+      location.href = 'pag3.html';
+    }else{
+      pw.classList.remove('shake'); void pw.offsetWidth; pw.classList.add('shake');
+    }
+  };
+  ok.addEventListener('click', check);
+  pw.addEventListener('keydown', (e)=>{ if(e.key==='Enter') check(); });
+})();
+</script>
+
+    </div>
+    <div class="footer-note">Feito com 💗 por Vini para Sofia — Tema Hello Kitty romântico (com corações e música).</div>
+  </div>
+  <script src="./assets/js/hearts-bg.js"></script>
+  <script src="./assets/js/music.js"></script>
+
+</body>
+</html>
