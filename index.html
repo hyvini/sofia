@@ -16,14 +16,23 @@
 <h1>🎀 Oi, meu amor, vamos brincar um pouco?</h1>
 <p class="big">Ache o coração certo para continuar. Se errar, a página reinicia. Boa sorte, minha vida! 💞</p>
 <div id="grid" class="grid"></div>
+<div id="tries" class="badge">Tentativas: 0/3</div>
 <div class="actions">
   <button class="btn btn-outline" onclick="location.reload()">Reiniciar</button>
 </div>
 <script>
 (function(){
   const grid = document.getElementById('grid');
+  const triesEl = document.getElementById('tries');
   const total = 16;
   const correctIndex = Math.floor(Math.random()*total);
+  let attempts = 0;
+
+  const updateTries = () => {
+    if (triesEl) triesEl.textContent = `Tentativas: ${attempts}/3`;
+  };
+  updateTries();
+
   for(let i=0;i<total;i++){
     const wrap = document.createElement('div');
     wrap.className = 'game-heart';
@@ -32,8 +41,14 @@
       if(i===correctIndex){
         location.href = 'senha.html';
       }else{
-        // little delay to show click
-        setTimeout(()=> location.reload(), 200);
+        attempts++;
+        updateTries();
+        // feedback de erro sem recarregar de cara
+        wrap.classList.add('shake');
+        setTimeout(()=> wrap.classList.remove('shake'), 300);
+        if(attempts>=3){
+          setTimeout(()=> location.reload(), 250);
+        }
       }
     });
     grid.appendChild(wrap);

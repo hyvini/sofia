@@ -40,7 +40,7 @@ body{
   padding: 24px;
 }
 
-.card{
+.card{ position: relative; z-index: 1;
   background: var(--glass);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.6);
@@ -120,13 +120,7 @@ p.big{
 @keyframes spin{ to{ transform: rotate(360deg);} }
 
 /* Heart background animation */
-.hearts-bg{
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
+.hearts-bg{ position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
 
 .heart-float{
   position: absolute;
@@ -159,8 +153,8 @@ p.big{
 .grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap:16px;
-  margin-top: 12px;
+  gap:32px;
+  margin-top:24px;
 }
 
 .game-heart{

@@ -1,5 +1,5 @@
 // Simple canvas hearts burst
-export function burstHearts(){
+window.burstHearts = function(){
   const cvs = document.createElement('canvas');
   cvs.style.position = 'fixed';
   cvs.style.inset = '0';

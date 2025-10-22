@@ -11,7 +11,7 @@
   const audio = document.createElement('audio');
   audio.src = './assets/music/Tempinho_Bom_Salvador_da_Rima.mp3'; // Coloque o arquivo aqui com este nome
   audio.preload = 'auto';
-  audio.loop = true;
+  audio.loop = true; audio.volume = 0.85;
   document.body.appendChild(audio);
 
   const toast = (msg) => {
@@ -43,7 +43,7 @@
   });
 
   // If audio missing, inform politely on first attempt
-  audio.addEventListener('error', ()=>{
+  let _audioErrorNotified=false; audio.addEventListener('error', ()=>{ _audioErrorNotified=true;
     // only notify once when the user clicks
     btn.addEventListener('click', function once(){
       toast('Adicione o arquivo MP3 em /assets/music com o nome "Tempinho_Bom_Salvador_da_Rima.mp3".');
